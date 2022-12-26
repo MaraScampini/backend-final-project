@@ -1,0 +1,33 @@
+{
+  "name": "backend-final-project",
+  "version": "0.0.0",
+  "description": "Backend for the final project at GeeksHubs Academy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaraScampini/backend-final-project.git"
+  },
+  "keywords": [
+    "express",
+    "sql",
+    "sequelize"
+  ],
+  "author": "Mara Scampini",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaraScampini/backend-final-project/issues"
+  },
+  "homepage": "https://github.com/MaraScampini/backend-final-project#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.20",
+    "sequelize": "^6.28.0",
+    "sequelize-cli": "^6.5.2"
+  }
+}
