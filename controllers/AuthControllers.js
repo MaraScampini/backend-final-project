@@ -5,7 +5,7 @@ const {
   assertEmailIsUniqueService,
   createUserService,
   encryptPasswordService,
-} = require("../Services/AuthServices");
+} = require("../services/AuthServices");
 require("dotenv").config();
 
 const jsonwebtoken = require("jsonwebtoken");
@@ -32,7 +32,6 @@ const authRegisterController = async (req, res) => {
   // Check that the email is not already registered
   try {
     await assertEmailIsUniqueService(body.email);
-    console.log("Hola");
   } catch (error) {
     console.error(error);
     res.status(400).send(`Email is already registered`);
