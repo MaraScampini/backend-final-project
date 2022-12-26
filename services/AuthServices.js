@@ -53,17 +53,10 @@ const createUserService = async (userBody) => {
   userBody.password = hash;
 
   const user = await models.Users.create({
-    name: userBody.name,
     username: userBody.username,
     email: userBody.email,
     password: userBody.password,
-    address: userBody.address,
-    city: userBody.city,
-    date_of_sign_up: `${new Date().getFullYear()}-${
-      new Date().getMonth() + 1
-    }-${new Date().getDate()}`,
-    deleted: false,
-    RoleIdRole: "user",
+    roleIdRole: "user",
   });
   return user;
 };
