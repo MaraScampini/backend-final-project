@@ -37,7 +37,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       roleIdRole: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'roles',

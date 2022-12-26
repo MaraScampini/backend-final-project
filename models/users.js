@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
   class users extends Model {
     static associate(models) {
       users.belongsTo(models.roles);
+      users.hasMany(models.routines);
     }
   }
   users.init(
@@ -11,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       id_user: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        primaryKey: true
       },
       username: {
         type: DataTypes.STRING,
@@ -28,6 +30,10 @@ module.exports = (sequelize, DataTypes) => {
       surname: DataTypes.STRING,
       address: DataTypes.STRING,
       age: DataTypes.INTEGER,
+      roleIdRole: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      }
     },
     {
       sequelize,
