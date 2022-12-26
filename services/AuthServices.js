@@ -56,7 +56,7 @@ const createUserService = async (userBody) => {
     username: userBody.username,
     email: userBody.email,
     password: userBody.password,
-    roleIdRole: "user",
+    roleIdRole: 2,
   });
   return user;
 };
