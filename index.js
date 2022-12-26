@@ -3,6 +3,7 @@ const db = require("./db/db");
 
 const app = express();
 const router = require('./router');
+const { sequelize } = require("./models/index");
 const PORT = process.env.PORT || 3000;
 const cors = require("cors");
 //Config Cors Options
@@ -19,11 +20,12 @@ app.use(express());
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  // sequelize.sync({force: true})
   db.authenticate()
     .then(() => {
-      console.log("Conectados a la DB");
+      console.log("Connected to the database");
     })
     .catch((error) => {
-      console.log("Se ha producido un error: " + error);
+      console.log("Error: " + error);
     });
 })
