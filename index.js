@@ -16,7 +16,7 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express());
-// app.use(router);
+app.use(router);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
