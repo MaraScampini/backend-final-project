@@ -15,7 +15,8 @@ var corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(express());
+app.use(express.json());
+
 app.use(router);
 
 app.listen(PORT, () => {

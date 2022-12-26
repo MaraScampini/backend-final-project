@@ -51,7 +51,7 @@ const authLoginController = async (req, res) => {
   const { email, password } = req.body;
   try {
     // Find the user by their email
-    const userFound = await models.Users.findOne({
+    const userFound = await models.users.findOne({
       where: { email: email },
     });
     if (!userFound) {
