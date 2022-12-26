@@ -76,16 +76,12 @@ const authLoginController = async (req, res) => {
     if (secret.length < 10) {
       throw new Error("JWT_SECRET is not set");
     }
-
     const jwt = jsonwebtoken.sign(
       {
         email: userFound.email,
         id: userFound.id_user,
-        role: userFound.RoleIdRole.toLowerCase(),
-        name: userFound.name,
+        role: userFound.RoleIdRole,
         username: userFound.username,
-        address: userFound.address,
-        city: userFound.city,
       },
       secret
     );
