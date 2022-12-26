@@ -51,7 +51,7 @@ const encryptPasswordService = (pass) => {
 const createUserService = async (userBody) => {
   const hash = encryptPasswordService(userBody.password);
   userBody.password = hash;
-
+  
   const user = await models.users.create({
     username: userBody.username,
     email: userBody.email,

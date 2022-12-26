@@ -11,8 +11,9 @@ module.exports = (sequelize, DataTypes) => {
     {
       id_user: {
         type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
         allowNull: false,
-        primaryKey: true
       },
       username: {
         type: DataTypes.STRING,
@@ -32,8 +33,8 @@ module.exports = (sequelize, DataTypes) => {
       age: DataTypes.INTEGER,
       roleIdRole: {
         type: DataTypes.INTEGER,
-        allowNull: false
-      }
+        allowNull: false,
+      },
     },
     {
       sequelize,
