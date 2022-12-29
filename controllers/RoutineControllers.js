@@ -32,7 +32,22 @@ const getMyRoutines = async (req, res) => {
   } catch (error) {}
 };
 
+const getPublicRoutines = async (req, res) => {
+  try {
+    let routines = await models.routines.findAll({
+      where: {
+        public: true
+      },
+    });
+    res.json({
+      message: "These are all the public routines",
+      routines,
+    });
+  } catch (error) {}
+};
+
 module.exports = {
   createRoutine,
-  getMyRoutines
+  getMyRoutines,
+  getPublicRoutines
 };
