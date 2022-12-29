@@ -1,6 +1,5 @@
 const models = require("../models/index");
 const { encryptPasswordService } = require("../services/AuthServices");
-const jsonwebtoken = require("jsonwebtoken");
 require("dotenv").config();
 
 const editUser = async (req, res) => {
