@@ -3,7 +3,7 @@ const router = express.Router();
 const {
   isValidRole,
   isValidUser,
-} = require("../middlewares/authMiddleware");
+} = require("../middlewares/AuthMiddleware");
 
 const {
   editUser
