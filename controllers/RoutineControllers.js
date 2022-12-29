@@ -36,7 +36,7 @@ const getPublicRoutines = async (req, res) => {
   try {
     let routines = await models.routines.findAll({
       where: {
-        public: true
+        public: true,
       },
     });
     res.json({
@@ -46,8 +46,36 @@ const getPublicRoutines = async (req, res) => {
   } catch (error) {}
 };
 
+const deleteRoutine = async (req, res) => {
+  try {
+    let routineId = req.body.routine;
+    const routine = await models.routines.findOne({
+      where: {
+        id_routine: routineId,
+      },
+    });
+    if (routine.userIdUser !== req.auth.id) {
+      res.json({
+        message: "You cannot delete routines made by other users",
+      });
+    } else {
+      await models.routines.destroy({
+        where: {
+          id_routine: routineId,
+        },
+      });
+      res.json({
+        message: "Routine deleted",
+      });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 module.exports = {
   createRoutine,
   getMyRoutines,
-  getPublicRoutines
+  getPublicRoutines,
+  deleteRoutine,
 };
