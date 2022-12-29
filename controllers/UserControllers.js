@@ -61,8 +61,37 @@ const getAllUsers = async (req, res) => {
   }
 };
 
+const deleteUser = async (req, res) => {
+  try {
+    const email = req.body.email;
+    const userFound = await models.users.findOne({
+      where: {
+        email: email,
+      },
+    });
+
+    if ((userFound.roleIdRole === 1)) {
+      res.json({
+        message: "You cannot delete admins",
+      });
+    } else {
+      models.users.destroy({
+        where: {
+          email: email,
+        },
+      });
+      res.json({
+        message: "User deleted"
+      })
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 module.exports = {
   editUser,
   getAllUsers,
-  editPassword
+  editPassword,
+  deleteUser
 };
