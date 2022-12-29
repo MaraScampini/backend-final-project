@@ -73,9 +73,43 @@ const deleteRoutine = async (req, res) => {
   }
 };
 
+const editRoutine = async (req, res) => {
+  try {
+    let routineId = req.body.routine;
+    const routine = await models.routines.findOne({
+      where: {
+        id_routine: routineId,
+      },
+    });
+    if (routine.userIdUser !== req.auth.id) {
+      res.json({
+        message: "You cannot edit routines made by other users",
+      });
+    } else {
+      await models.routines.update(
+        {
+          name: req.body.name,
+          public: req.body.public,
+        },
+        {
+          where: {
+            id_routine: routineId,
+          },
+        }
+      );
+      res.json({
+        message: "Routine edited",
+      });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 module.exports = {
   createRoutine,
   getMyRoutines,
   getPublicRoutines,
   deleteRoutine,
+  editRoutine,
 };
