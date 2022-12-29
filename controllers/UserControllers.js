@@ -70,7 +70,7 @@ const deleteUser = async (req, res) => {
       },
     });
 
-    if ((userFound.roleIdRole === 1)) {
+    if (userFound.roleIdRole === 1) {
       res.json({
         message: "You cannot delete admins",
       });
@@ -81,8 +81,36 @@ const deleteUser = async (req, res) => {
         },
       });
       res.json({
-        message: "User deleted"
-      })
+        message: "User deleted",
+      });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const deleteMyAccount = async (req, res) => {
+  try {
+    const email = req.auth.email;
+    const userFound = await models.users.findOne({
+      where: {
+        email: email,
+      },
+    });
+
+    if (userFound.roleIdRole === 1) {
+      res.json({
+        message: "Admin account cannot be deleted",
+      });
+    } else {
+      models.users.destroy({
+        where: {
+          email: email,
+        },
+      });
+      res.json({
+        message: "Account deleted",
+      });
     }
   } catch (error) {
     console.error(error);
@@ -93,5 +121,6 @@ module.exports = {
   editUser,
   getAllUsers,
   editPassword,
-  deleteUser
+  deleteUser,
+  deleteMyAccount,
 };
