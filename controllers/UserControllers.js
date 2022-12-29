@@ -31,6 +31,27 @@ const editUser = async (req, res) => {
   }
 };
 
+const editPassword = async (req, res) => {
+  try {
+    const user = req.body;
+    delete user.email;
+    let newPassword = encryptPasswordService(user.password);
+    await models.users.update(
+      {
+        password: newPassword,
+      },
+      {
+        where: { email: req.auth.email },
+      }
+    );
+    res.json({
+      message: "Password updated",
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const getAllUsers = async (req, res) => {
   try {
     const users = await models.users.findAll();
@@ -42,5 +63,6 @@ const getAllUsers = async (req, res) => {
 
 module.exports = {
   editUser,
-  getAllUsers
+  getAllUsers,
+  editPassword
 };
