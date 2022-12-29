@@ -1,4 +1,5 @@
 const jsonwebtoken = require("jsonwebtoken");
+require("dotenv").config();
 
 // Middleware to authenticate a user
 const authBearerMiddleware = async (req, res, next) => {
@@ -9,7 +10,7 @@ const authBearerMiddleware = async (req, res, next) => {
       throw new Error("Invalid strategy");
     }
 
-    const payload = jsonwebtoken.verify(jwt, "secretjsonwebtoken");
+    const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET);
     req.auth = payload;
     next();
   } catch (error) {
@@ -31,9 +32,7 @@ const isValidRole = (role) => (req, res, next) => {
 
 // Middleware to assert if the user can access the desired endpoint
 const isValidUser = (email) => async (req, res, next) => {
-  email = req.params.email || req.body.email;
-  console.log(email);
-  console.log(req.auth.email);
+  email = req.auth.email;
   if (req.auth?.email === email) {
     next();
   } else {
