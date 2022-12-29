@@ -23,6 +23,7 @@ const authBearerMiddleware = async (req, res, next) => {
 
 // Middleware to assert if the role of the user gives them authorization to access the desired endpoint
 const isValidRole = (role) => (req, res, next) => {
+  console.log(req.auth.role)
   if (req.auth?.role === role) {
     next();
   } else {

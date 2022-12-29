@@ -80,7 +80,7 @@ const authLoginController = async (req, res) => {
       {
         email: userFound.email,
         id: userFound.id_user,
-        role: userFound.RoleIdRole,
+        role: userFound.roleIdRole,
         username: userFound.username,
       },
       secret

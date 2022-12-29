@@ -24,8 +24,17 @@ const editUser = async (req, res) => {
 
     res.json({
       resp,
-      message: "User data updated"
-    })
+      message: "User data updated",
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await models.users.findAll();
+    res.json({ message: "Users found", users });
   } catch (error) {
     console.error(error);
   }
@@ -33,4 +42,5 @@ const editUser = async (req, res) => {
 
 module.exports = {
   editUser,
+  getAllUsers
 };

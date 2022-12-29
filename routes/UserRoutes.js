@@ -6,9 +6,10 @@ const {
 } = require("../middlewares/AuthMiddleware");
 
 const {
-  editUser
+  editUser, getAllUsers
 } = require ('../controllers/UserControllers');
 
 router.patch("/profile", isValidUser(), editUser);
+router.get("/all", isValidRole(1), getAllUsers);
 
 module.exports = router;
