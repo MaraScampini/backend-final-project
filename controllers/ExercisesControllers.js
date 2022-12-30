@@ -1,5 +1,6 @@
 const models = require("../models/index");
 require("dotenv").config();
+const { Op } = require("sequelize");
 
 const getExercise = async (req, res) => {
   try {
@@ -48,7 +49,7 @@ const getExerciseByMuscle = async (req, res) => {
     const muscle = req.params.muscle;
     let exercises = await models.exercises.findAll({
       where: {
-        main_muscle: muscle
+        main_muscle: muscle,
       },
     });
     res.json({
@@ -59,9 +60,26 @@ const getExerciseByMuscle = async (req, res) => {
   }
 };
 
+const getExerciseByName = async (req, res) => {
+  try {
+    const name = req.params.name;
+    let exercises = await models.exercises.findAll({
+      where: {
+        name: { [Op.like]: `%${name}%` },
+      },
+    });
+    res.json({
+      exercises
+    })
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 module.exports = {
   getExercise,
   getAllExercises,
   getExerciseByMaterial,
-  getExerciseByMuscle
+  getExerciseByMuscle,
+  getExerciseByName
 };
