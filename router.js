@@ -9,7 +9,7 @@ const ExerciseRoutes = require("./routes/ExercisesRoutes");
 
 router.use("/auth", AuthRoutes);
 router.use("/exercise", ExerciseRoutes);
+router.use("/routine", RoutineRoutes);
 router.use(authBearerMiddleware);
 router.use("/user", UserRoutes);
-router.use("/routine", RoutineRoutes);
 module.exports = router;
