@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       routines.belongsTo(models.users);
-      routines.belongsToMany(models.exercises, { through: "sets" });
+      routines.belongsToMany(models.exercises, { through: {model: models.sets, unique: false} });
     }
   }
   routines.init(

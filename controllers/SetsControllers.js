@@ -11,8 +11,8 @@ const newSet = async (req, res) => {
     });
     if (routineFound.userIdUser === req.auth.id) {
       const newSet = await models.sets.create({
-        reps: 0,
-        weight: 0,
+        reps: 0 || set.reps,
+        weight: 0 || set.weight,
         routineIdRoutine: set.routine,
         exerciseIdExercise: set.exercise,
       });
@@ -65,7 +65,24 @@ const editSet = async (req, res) => {
   }
 };
 
+const getSets = async (req, res) => {
+  try {
+    const sets = await models.sets.findAll({
+      where: {
+        exerciseIdExercise: req.params.exercise,
+      },
+    });
+    res.json({
+      message: "Sets retrieved",
+      sets,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 module.exports = {
   newSet,
   editSet,
+  getSets
 };

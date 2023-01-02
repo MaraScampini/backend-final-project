@@ -8,7 +8,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      exercises.belongsToMany(models.routines, {through: 'sets'});
+      exercises.belongsToMany(models.routines, {
+        through: { model: models.sets, unique: false },
+      });
     }
   }
   exercises.init(
