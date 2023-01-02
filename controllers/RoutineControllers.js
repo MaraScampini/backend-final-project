@@ -106,10 +106,29 @@ const editRoutine = async (req, res) => {
   }
 };
 
+const getRoutine = async (req, res) => {
+  try {
+    let routine = await models.routines.findAll({
+      where: {
+        id_routine: req.params.id
+      },
+      include: {
+        model: models.exercises,
+        through: {
+          attributes: []
+        }
+    }});
+    res.json({
+      routine,
+    });
+  } catch (error) {}
+};
+
 module.exports = {
   createRoutine,
   getMyRoutines,
   getPublicRoutines,
   deleteRoutine,
   editRoutine,
+  getRoutine
 };
