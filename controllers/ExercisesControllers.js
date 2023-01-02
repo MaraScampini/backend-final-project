@@ -95,11 +95,36 @@ const createExercise = async (req, res) => {
   }
 };
 
+const editExercise = async (req, res) => {
+  try {
+    const exercise = req.body;
+
+    await models.exercises.update(
+      {
+        name: exercise.name,
+        main_muscle: exercise.muscle,
+        material: exercise.material,
+        image: exercise.image,
+        description: exercise.description,
+      },
+      { where: {
+        id_exercise: exercise.id_exercise
+      } }
+    );
+    res.json({
+      message: "Exercise edited",
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 module.exports = {
   getExercise,
   getAllExercises,
   getExerciseByMaterial,
   getExerciseByMuscle,
   getExerciseByName,
-  createExercise
+  createExercise,
+  editExercise,
 };
