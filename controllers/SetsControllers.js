@@ -65,7 +65,7 @@ const editSet = async (req, res) => {
   }
 };
 
-const getSets = async (req, res) => {
+const getSetsByExercise = async (req, res) => {
   try {
     const sets = await models.sets.findAll({
       where: {
@@ -84,5 +84,5 @@ const getSets = async (req, res) => {
 module.exports = {
   newSet,
   editSet,
-  getSets
+  getSetsByExercise
 };
