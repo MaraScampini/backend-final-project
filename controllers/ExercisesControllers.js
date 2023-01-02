@@ -69,8 +69,27 @@ const getExerciseByName = async (req, res) => {
       },
     });
     res.json({
-      exercises
-    })
+      exercises,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const createExercise = async (req, res) => {
+  try {
+    const exercise = req.body;
+    const newExercise = await models.exercises.create({
+      name: exercise.name,
+      main_muscle: exercise.muscle,
+      material: exercise.material,
+      image: exercise.image,
+      description: exercise.description,
+    });
+    res.json({
+      message: "Exercise created",
+      newExercise,
+    });
   } catch (error) {
     console.error(error);
   }
@@ -81,5 +100,6 @@ module.exports = {
   getAllExercises,
   getExerciseByMaterial,
   getExerciseByMuscle,
-  getExerciseByName
+  getExerciseByName,
+  createExercise
 };
