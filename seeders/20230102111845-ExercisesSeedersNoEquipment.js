@@ -98,10 +98,11 @@ module.exports = {
         },
         {
           id_exercise: 48,
-          name: "",
-          main_muscle: "",
-          material: "",
-          description: "",
+          name: "Pull Up",
+          main_muscle: "Upper Back",
+          material: "None",
+          description:
+            "Start by hanging from the bar with arms extended, your hands shoulder-width apart, and a full grip on the bar. Pull until your chin is higher than the bar. Lower your body back down until your arms are at full extension. You should feel the tension in your biceps, lats and shoulders.",
           createdAt: "2023-01-02 00:00:00",
           updatedAt: "2023-01-02 00:00:00",
         },
