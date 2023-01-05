@@ -35,7 +35,7 @@ const assertEmailIsUniqueService = async (email) => {
   const user = await models.users.findOne({
     where: { email: email },
   });
-  if (user && user.deleted == false) {
+  if (user) {
     console.log("Hola 1");
     throw new Error("Email is already registered");
   }
