@@ -116,10 +116,25 @@ const deleteMyAccount = async (req, res) => {
   }
 };
 
+const getMyData = async (req, res) => {
+  try {
+    const user = await models.users.findOne({
+      where: {
+        id_user : req.auth.id
+      }
+    })
+    res.json({
+      user
+    })
+  } catch (error) {
+    console.error(error);
+  }
+}
 module.exports = {
   editUser,
   getAllUsers,
   editPassword,
   deleteUser,
   deleteMyAccount,
+  getMyData
 };
