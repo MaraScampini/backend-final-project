@@ -15,6 +15,7 @@ const editUser = async (req, res) => {
         surname: user.surname,
         address: user.address,
         age: user.age,
+        username: user.username
       },
       {
         where: { email: req.auth?.email },
