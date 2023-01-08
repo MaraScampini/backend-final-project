@@ -4,6 +4,7 @@ const db = require("./db/db");
 const app = express();
 const router = require('./router');
 const { sequelize } = require("./models/index");
+const exercises = require("./models/exercises")
 const PORT = process.env.PORT || 3000;
 const cors = require("cors");
 //Config Cors Options
@@ -22,6 +23,7 @@ app.use(router);
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   // sequelize.sync({force: true})
+  // sequelize.sync({alter: true})
   db.authenticate()
     .then(() => {
       console.log("Connected to the database");
