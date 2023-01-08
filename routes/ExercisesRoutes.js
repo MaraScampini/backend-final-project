@@ -7,6 +7,7 @@ const {
   getExerciseByName,
   createExercise,
   editExercise,
+  getExerciseByMaterialAndMuscle,
 } = require("../controllers/ExercisesControllers");
 const {
   isValidRole,
@@ -19,6 +20,7 @@ router.get("/:id", getExercise);
 router.get("/material/:material", getExerciseByMaterial);
 router.get("/muscle/:muscle", getExerciseByMuscle);
 router.get("/name/:name", getExerciseByName);
+router.get("/mat_mus/:filters", getExerciseByMaterialAndMuscle)
 router.use(authBearerMiddleware);
 router.use(isValidRole(1));
 router.post("/new", createExercise);

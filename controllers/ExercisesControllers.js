@@ -76,6 +76,25 @@ const getExerciseByName = async (req, res) => {
   }
 };
 
+const getExerciseByMaterialAndMuscle = async(req, res) => {
+  try{
+    const filters = req.params.filters;
+    console.log(filters)
+    const [filter1, filter2] = filters.split(" ");
+    let exercises = await models.exercises.findAll({
+      where: {
+        material: filter1,
+        main_muscle: filter2
+      }
+    })
+    res.json({
+      exercises
+    })
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 const createExercise = async (req, res) => {
   try {
     const exercise = req.body;
@@ -127,4 +146,5 @@ module.exports = {
   getExerciseByName,
   createExercise,
   editExercise,
+  getExerciseByMaterialAndMuscle
 };
