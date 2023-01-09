@@ -114,7 +114,7 @@ const editRoutine = async (req, res) => {
 
 const getRoutine = async (req, res) => {
   try {
-    let routine = await models.routines.findAll({
+    let routine = await models.routines.findOne({
       where: {
         id_routine: req.params.id,
       },
