@@ -24,6 +24,12 @@ const getMyRoutines = async (req, res) => {
       where: {
         userIdUser: req.auth.id,
       },
+      include: {
+        model: models.exercises,
+        through: {
+          attributes: [],
+        },
+      },
     });
     res.json({
       message: "These are your routines",
