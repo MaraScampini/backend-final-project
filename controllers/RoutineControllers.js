@@ -110,14 +110,15 @@ const getRoutine = async (req, res) => {
   try {
     let routine = await models.routines.findAll({
       where: {
-        id_routine: req.params.id
+        id_routine: req.params.id,
       },
       include: {
         model: models.exercises,
         through: {
-          attributes: []
-        }
-    }});
+          attributes: [],
+        },
+      },
+    });
     res.json({
       routine,
     });
@@ -130,5 +131,5 @@ module.exports = {
   getPublicRoutines,
   deleteRoutine,
   editRoutine,
-  getRoutine
+  getRoutine,
 };

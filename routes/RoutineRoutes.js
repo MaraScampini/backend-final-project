@@ -12,10 +12,10 @@ const router = express.Router();
 
 router.get("/public", getPublicRoutines);
 router.use(authBearerMiddleware);
-router.get("/:id", getRoutine);
 router.post("/new", createRoutine);
 router.get("/all", getMyRoutines);
 router.delete("/delete", deleteRoutine);
 router.patch("/edit", editRoutine);
+router.get("/:id", getRoutine);
 
 module.exports = router;
