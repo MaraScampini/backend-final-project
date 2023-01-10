@@ -48,6 +48,7 @@ const editSet = async (req, res) => {
           where: {
             routineIdRoutine: set.routine,
             exerciseIdExercise: set.exercise,
+            id_set: set.id
           },
         }
       );
