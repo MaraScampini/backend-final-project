@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.post("/new", newSet)
 router.patch("/edit", editSet);
-router.get("/:routine", getSetsByRoutine)
 router.delete("/delete", deleteSet)
+router.get("/:routine", getSetsByRoutine)
 
 module.exports = router;
