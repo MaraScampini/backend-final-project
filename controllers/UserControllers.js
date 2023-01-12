@@ -54,7 +54,11 @@ const editPassword = async (req, res) => {
 
 const getAllUsers = async (req, res) => {
   try {
-    const users = await models.users.findAll();
+    const users = await models.users.findAll({
+      where:{
+        roleIdRole : 2
+      }
+    });
     res.json({ message: "Users found", users });
   } catch (error) {
     console.error(error);
