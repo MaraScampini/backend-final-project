@@ -8,11 +8,7 @@ I decided to make a web application to help out gym enjoyers, that would allow t
 
 ## Technologies used
 
-<img src="./assets/javascript.png" height="100">
-<img src="./assets/node.png" height="100">
-<img src="./assets/sql.jpeg" height="100">
-<img src="./assets/express.png" height="100">
-<img src="./assets/sequelize.png" height="100">
+<img src="./assets/javascript.png" height="100"><img src="./assets/node.png" height="100"><img src="./assets/sql.jpeg" height="100"><img src="./assets/express.png" height="100"><img src="./assets/sequelize.png" height="100">
 
 
 ## Instructions to use the project
