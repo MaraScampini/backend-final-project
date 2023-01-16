@@ -4,15 +4,15 @@ This project required a functional API connected to a database with at least one
 
 I decided to make a web application to help out gym enjoyers, that would allow them to create and track new routines for their exercise journey. Next you can see the diagram for the relational database.
 
-<img src="../backend-final-project/database.png">
+<img src="./assets/database.png">
 
 ## Technologies used
 
-<img src="../backend-final-project/assets/javascript.png" height="100">
-<img src="../backend-final-project/assets/node.png" height="100">
-<img src="../backend-final-project/assets/sql.jpeg" height="100">
-<img src="../backend-final-project/assets/express.png" height="100">
-<img src="../backend-final-project/assets/sequelize.png" height="100">
+<img src="./assets/javascript.png" height="100">
+<img src="./assets/node.png" height="100">
+<img src="./assets/sql.jpeg" height="100">
+<img src="./assets/express.png" height="100">
+<img src="./assets/sequelize.png" height="100">
 
 
 ## Instructions to use the project
